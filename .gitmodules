@@ -1,0 +1,3 @@
+[submodule "protos"]
+	path = protos
+	url = git@github.com:S4ske/protos.git
