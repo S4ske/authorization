@@ -42,7 +42,12 @@ class AuthStub(object):
         self.Login = channel.unary_unary(
                 '/auth.Auth/Login',
                 request_serializer=sso__pb2.LoginRequest.SerializeToString,
-                response_deserializer=sso__pb2.LoginResponse.FromString,
+                response_deserializer=sso__pb2.TokenInfo.FromString,
+                _registered_method=True)
+        self.Refresh = channel.unary_unary(
+                '/auth.Auth/Refresh',
+                request_serializer=sso__pb2.RefreshRequest.SerializeToString,
+                response_deserializer=sso__pb2.TokenInfo.FromString,
                 _registered_method=True)
 
 
@@ -61,6 +66,12 @@ class AuthServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def Refresh(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_AuthServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -72,7 +83,12 @@ def add_AuthServicer_to_server(servicer, server):
             'Login': grpc.unary_unary_rpc_method_handler(
                     servicer.Login,
                     request_deserializer=sso__pb2.LoginRequest.FromString,
-                    response_serializer=sso__pb2.LoginResponse.SerializeToString,
+                    response_serializer=sso__pb2.TokenInfo.SerializeToString,
+            ),
+            'Refresh': grpc.unary_unary_rpc_method_handler(
+                    servicer.Refresh,
+                    request_deserializer=sso__pb2.RefreshRequest.FromString,
+                    response_serializer=sso__pb2.TokenInfo.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -128,7 +144,34 @@ class Auth(object):
             target,
             '/auth.Auth/Login',
             sso__pb2.LoginRequest.SerializeToString,
-            sso__pb2.LoginResponse.FromString,
+            sso__pb2.TokenInfo.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def Refresh(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/auth.Auth/Refresh',
+            sso__pb2.RefreshRequest.SerializeToString,
+            sso__pb2.TokenInfo.FromString,
             options,
             channel_credentials,
             insecure,

@@ -1,0 +1,1 @@
+python -m grpc_tools.protoc -I protos/sso --python_out=gen --pyi_out=gen --grpc_python_out=gen sso.proto

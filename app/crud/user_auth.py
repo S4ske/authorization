@@ -28,10 +28,10 @@ class UserAuthRepository:
 		result = await self._async_session.execute(stmt)
 		if not result:
 			return None
-		user_auth = result.first()
-		if not user_auth:
+		user_auth_row = result.first()
+		if not user_auth_row:
 			return None
-		return user_auth[0]
+		return user_auth_row[0]
 
 	async def update(self, id: int, user_auth_update_schema: UserAuthUpdateSchema) -> UserAuth | None:
 		user_auth = await self.get_by_id(id)

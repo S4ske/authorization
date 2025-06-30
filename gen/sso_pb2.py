@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\tsso.proto\x12\x04\x61uth\"2\n\x0fRegisterRequest\x12\r\n\x05\x65mail\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"#\n\x10RegisterResponse\x12\x0f\n\x07user_id\x18\x01 \x01(\x03\"?\n\x0cLoginRequest\x12\r\n\x05\x65mail\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\x12\x0e\n\x06\x61pp_id\x18\x03 \x01(\x05\"\x1e\n\rLoginResponse\x12\r\n\x05token\x18\x01 \x01(\t2s\n\x04\x41uth\x12\x39\n\x08Register\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\x12\x30\n\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\tsso.proto\x12\x04\x61uth\"2\n\x0fRegisterRequest\x12\r\n\x05\x65mail\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"#\n\x10RegisterResponse\x12\x0f\n\x07user_id\x18\x01 \x01(\x03\"/\n\x0cLoginRequest\x12\r\n\x05\x65mail\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"8\n\tTokenInfo\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\x12\x15\n\rrefresh_token\x18\x02 \x01(\t\"\'\n\x0eRefreshRequest\x12\x15\n\rrefresh_token\x18\x01 \x01(\t2\xa1\x01\n\x04\x41uth\x12\x39\n\x08Register\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\x12,\n\x05Login\x12\x12.auth.LoginRequest\x1a\x0f.auth.TokenInfo\x12\x30\n\x07Refresh\x12\x14.auth.RefreshRequest\x1a\x0f.auth.TokenInfob\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -36,9 +36,11 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_REGISTERRESPONSE']._serialized_start=71
   _globals['_REGISTERRESPONSE']._serialized_end=106
   _globals['_LOGINREQUEST']._serialized_start=108
-  _globals['_LOGINREQUEST']._serialized_end=171
-  _globals['_LOGINRESPONSE']._serialized_start=173
-  _globals['_LOGINRESPONSE']._serialized_end=203
-  _globals['_AUTH']._serialized_start=205
-  _globals['_AUTH']._serialized_end=320
+  _globals['_LOGINREQUEST']._serialized_end=155
+  _globals['_TOKENINFO']._serialized_start=157
+  _globals['_TOKENINFO']._serialized_end=213
+  _globals['_REFRESHREQUEST']._serialized_start=215
+  _globals['_REFRESHREQUEST']._serialized_end=254
+  _globals['_AUTH']._serialized_start=257
+  _globals['_AUTH']._serialized_end=418
 # @@protoc_insertion_point(module_scope)

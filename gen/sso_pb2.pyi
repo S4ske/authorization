@@ -19,17 +19,23 @@ class RegisterResponse(_message.Message):
     def __init__(self, user_id: _Optional[int] = ...) -> None: ...
 
 class LoginRequest(_message.Message):
-    __slots__ = ("email", "password", "app_id")
+    __slots__ = ("email", "password")
     EMAIL_FIELD_NUMBER: _ClassVar[int]
     PASSWORD_FIELD_NUMBER: _ClassVar[int]
-    APP_ID_FIELD_NUMBER: _ClassVar[int]
     email: str
     password: str
-    app_id: int
-    def __init__(self, email: _Optional[str] = ..., password: _Optional[str] = ..., app_id: _Optional[int] = ...) -> None: ...
+    def __init__(self, email: _Optional[str] = ..., password: _Optional[str] = ...) -> None: ...
 
-class LoginResponse(_message.Message):
-    __slots__ = ("token",)
-    TOKEN_FIELD_NUMBER: _ClassVar[int]
-    token: str
-    def __init__(self, token: _Optional[str] = ...) -> None: ...
+class TokenInfo(_message.Message):
+    __slots__ = ("access_token", "refresh_token")
+    ACCESS_TOKEN_FIELD_NUMBER: _ClassVar[int]
+    REFRESH_TOKEN_FIELD_NUMBER: _ClassVar[int]
+    access_token: str
+    refresh_token: str
+    def __init__(self, access_token: _Optional[str] = ..., refresh_token: _Optional[str] = ...) -> None: ...
+
+class RefreshRequest(_message.Message):
+    __slots__ = ("refresh_token",)
+    REFRESH_TOKEN_FIELD_NUMBER: _ClassVar[int]
+    refresh_token: str
+    def __init__(self, refresh_token: _Optional[str] = ...) -> None: ...
